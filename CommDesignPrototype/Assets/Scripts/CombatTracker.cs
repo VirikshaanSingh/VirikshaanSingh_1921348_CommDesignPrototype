@@ -17,6 +17,7 @@ public class CombatTracker : MonoBehaviour
     public Button attackButton;
     public Button healButton;
     public Button fleeButton;
+    public Animator cameraAnim;
 
     public CombatSystem combatState;
 
@@ -89,10 +90,11 @@ public class CombatTracker : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
+        CameraShake();
         trackerText.text = "The Enemy deals " + enemyStats.damage.ToString() + " damage!";
-        yield return new WaitForSeconds(1f);
         bool isDead = playerStats.AttackDamage(playerStats.damage);
         playerHud.SetHp(playerStats.hpCurrent);
+        yield return new WaitForSeconds(1f);
 
         if (isDead)
         {
@@ -153,6 +155,11 @@ public class CombatTracker : MonoBehaviour
         {
             trackerText.text = "You got away...";
         }
+    }
+
+    public void CameraShake()
+    {
+        cameraAnim.SetTrigger("cameraShake");
     }
 
 }
