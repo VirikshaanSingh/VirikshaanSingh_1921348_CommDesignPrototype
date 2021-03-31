@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1140877774136656463}
   - component: {fileID: 1140877774136656460}
   - component: {fileID: 286998307315745763}
+  - component: {fileID: 1307959476}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -96,6 +97,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityName: Enemy
-  damage: 12
   hpMax: 130
   hpCurrent: 130
+  damage: 12
+--- !u!95 &1307959476
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140877774136656461}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b9aaf3f0839dd140994b5a853f4b7ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
