@@ -5,6 +5,8 @@ public class StatScript : MonoBehaviour
     public string entityName;
     public int hpMax;
     public int hpCurrent;
+    public int mpMax;
+    public int mpCurrent;
     public int damage;
 
     public bool AttackDamage(int dmg)

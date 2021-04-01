@@ -8,6 +8,7 @@ public class CombatTracker : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     public GameObject healEffect;
+    public GameObject magicEffect;
     public Transform playerSpawn;
     public Transform enemySpawn;
     public Text trackerText;
@@ -112,6 +113,38 @@ public class CombatTracker : MonoBehaviour
         }
     }
 
+    IEnumerator PlayerMagic()
+    {
+        Instantiate(magicEffect, playerSpawn.transform.position, Quaternion.identity);
+        playerStats.damage = (Random.Range(1, 16) * 2);
+        playerStats.mpCurrent = playerStats.mpCurrent - 5;
+        playerHud.SetMp(playerStats.mpCurrent);
+        bool isDead = enemyStats.AttackDamage(playerStats.damage);
+        enemyHud.SetHp(enemyStats.hpCurrent);
+        trackerText.text = "You use 5 MP and deal " + playerStats.damage.ToString() + " magic damage!";
+        yield return new WaitForSeconds(1f);
+
+        if (isDead)
+        {
+            combatState = CombatSystem.Win;
+            EndFight();
+        }
+
+        else
+        {
+            combatState = CombatSystem.EnemyTurn;
+            StartCoroutine(EnemyTurn());
+        }
+    }
+
+    IEnumerator NoMP()
+    {
+        trackerText.text = "You don't have any MP left...";
+        yield return new WaitForSeconds(1f);
+        combatState = CombatSystem.EnemyTurn;
+        StartCoroutine(EnemyTurn());
+    }
+
     void PlayerTurn()
     {
         trackerText.text = "Your Turn";
@@ -121,7 +154,7 @@ public class CombatTracker : MonoBehaviour
     {
         if (combatState != CombatSystem.PlayerTurn)
             return;
-
+        
         StartCoroutine(PlayerAttack());
     }
 
@@ -133,13 +166,21 @@ public class CombatTracker : MonoBehaviour
         StartCoroutine(PlayerHeal());
     }
 
-    public void OnFleeButton()
+    public void OnMagicButton()
     {
         if (combatState != CombatSystem.PlayerTurn)
             return;
 
-        combatState = CombatSystem.Flee;
-        EndFight();
+        if (playerStats.mpCurrent > 0)
+        {
+            StartCoroutine(PlayerMagic());
+        }
+
+        else if (playerStats.mpCurrent <= 0)
+        {
+            playerStats.mpCurrent = 0;
+            StartCoroutine(NoMP());
+        }
     }
 
     void EndFight()

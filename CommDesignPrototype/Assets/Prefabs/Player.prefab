@@ -98,4 +98,6 @@ MonoBehaviour:
   entityName: Player
   hpMax: 100
   hpCurrent: 100
+  mpMax: 30
+  mpCurrent: 30
   damage: 10
