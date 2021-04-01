@@ -888,7 +888,6 @@ MonoBehaviour:
   healButton: {fileID: 215092802}
   fleeButton: {fileID: 408424461}
   cameraAnim: {fileID: 1075055121}
-  enemyAnim: {fileID: 1307959476, guid: 62ee5766ff52b634c8c7ca56db03e6cd, type: 3}
   combatState: 0
 --- !u!1 &583450479
 GameObject:

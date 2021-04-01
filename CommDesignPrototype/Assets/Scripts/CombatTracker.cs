@@ -18,7 +18,6 @@ public class CombatTracker : MonoBehaviour
     public Button healButton;
     public Button fleeButton;
     public Animator cameraAnim;
-
     public CombatSystem combatState;
 
     private void Start()
@@ -68,7 +67,6 @@ public class CombatTracker : MonoBehaviour
 
         if (isDead)
         {
-            Destroy(enemyPrefab);
             combatState = CombatSystem.Win;
             EndFight();
         }
@@ -94,7 +92,7 @@ public class CombatTracker : MonoBehaviour
     {
         enemyStats.damage = Random.Range(1, 16);
         CameraShake();
-        bool isDead = playerStats.AttackDamage(playerStats.damage);
+        bool isDead = playerStats.AttackDamage(enemyStats.damage);
         playerHud.SetHp(playerStats.hpCurrent);
         trackerText.text = "The Enemy deals " + enemyStats.damage.ToString() + " damage!";
         yield return new WaitForSeconds(1f);

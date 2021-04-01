@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityName: Enemy
-  hpMax: 130
-  hpCurrent: 130
+  hpMax: 1
+  hpCurrent: 1
   damage: 12
 --- !u!95 &1307959476
 Animator:
