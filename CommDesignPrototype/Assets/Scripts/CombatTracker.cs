@@ -60,6 +60,7 @@ public class CombatTracker : MonoBehaviour
 
     IEnumerator PlayerAttack()
     {
+        playerStats.damage = Random.Range(1, 16);
         bool isDead = enemyStats.AttackDamage(playerStats.damage);
         enemyHud.SetHp(enemyStats.hpCurrent);
         trackerText.text = "You deal " + playerStats.damage.ToString() + " damage!";
@@ -91,6 +92,7 @@ public class CombatTracker : MonoBehaviour
 
     IEnumerator EnemyTurn()
     {
+        enemyStats.damage = Random.Range(1, 16);
         CameraShake();
         bool isDead = playerStats.AttackDamage(playerStats.damage);
         playerHud.SetHp(playerStats.hpCurrent);
