@@ -7,6 +7,7 @@ public class CombatTracker : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
+    public GameObject healEffect;
     public Transform playerSpawn;
     public Transform enemySpawn;
     public Text trackerText;
@@ -80,6 +81,7 @@ public class CombatTracker : MonoBehaviour
 
     IEnumerator PlayerHeal()
     {
+        Instantiate(healEffect, playerSpawn.transform.position, Quaternion.identity);
         playerStats.Heal(10);
         playerHud.SetHp(playerStats.hpCurrent);
         trackerText.text = "You heal 10 points!";

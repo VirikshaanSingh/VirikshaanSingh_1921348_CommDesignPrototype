@@ -877,6 +877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 6560391753871506356, guid: 27685b5f50dbb9b4fba04c624e1dfb63, type: 3}
   enemyPrefab: {fileID: 1140877774136656461, guid: 62ee5766ff52b634c8c7ca56db03e6cd, type: 3}
+  healEffect: {fileID: 2438045122863481240, guid: 581a732f658f53844a8de15538c716ba, type: 3}
   playerSpawn: {fileID: 654051888}
   enemySpawn: {fileID: 903157562}
   trackerText: {fileID: 2130561451}
